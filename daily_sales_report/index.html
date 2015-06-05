@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="The graphical image tree map showing the trend of the each party mp's assets , criminal cases etc in 2014 .">
+    <meta name="author" content="HashResearch">
+    <meta http-equiv="refresh" content="600">
+    <meta name="keywords" content="data-visualisation, data-analytics, javascript, d3.js, data visualisation ,treemap,tree map,image treemap,imagemap">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../assets/images/logo.png">
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "cc30e3a2-dbb5-4545-ac40-64ca85fe3e37", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>   
+    <title>Daily Sales Report</title>
+  <style type="text/css">
+
+    .calender-map {
+      font: 10px sans-serif;
+      shape-rendering: crispEdges;
+    }
+
+    .day {
+      stroke: #666;
+    }
+
+    .month {
+      fill: none;
+      stroke: #000;
+      stroke-width: 2px;
+    }
+    
+    .RdYlGn .q0-11{fill:rgb(165,0,38)}
+    .RdYlGn .q1-{fill:rgb(215,48,39)}
+    .RdYlGn .q2-11{fill:rgb(244,109,67)}
+    .RdYlGn .q3-11{fill:rgb(253,174,97)}
+    .RdYlGn .q4-11{fill:rgb(254,224,139)}
+    .RdYlGn .q5-11{fill:rgb(255,255,191)}
+    .RdYlGn .q6-11{fill:rgb(217,239,139)}
+    .RdYlGn .q7-11{fill:rgb(166,217,106)}
+    .RdYlGn .q8-11{fill:rgb(102,189,99)}
+    .RdYlGn .q9-11{fill:rgb(26,152,80)}
+    .RdYlGn .q10-11{fill:rgb(0,104,55)}
+
+    </style>
+  </head>
+  <body>
+   <!-- HEADER -->
+        <div id="header_wrap" class="outer jumbotron-icon" id="overview" >
+            <header class="inner container">
+              <div class="info-icons pull-left"><a class="fa fa-home fa-2" id="home" href="/" ></a>&nbsp;&nbsp;&nbsp;</div>
+          <h1 id="project_title">Daily Sales Report</h1>
+              <p id="project_title_p">The values are visualized as colored cells per day. Days are arranged into columns by week, then grouped by month and years.
+              </p> 
+           </header>  
+        </div>
+        
+<!-- MAIN CONTENT -->
+    <div class="container">
+      <section id="main_content" class="inner">   
+       <div class="calender-map" align="center"></div>
+        <script type="text/javascript" src="calender-map.js"></script>
+        </div>
+      </section>
+    </div>
+</body>
+</html>

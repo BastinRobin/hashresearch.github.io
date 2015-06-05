@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Each blue line in this visualization is an employee. Each of the black vertical is a software language. Each employee is rated from 0 to 10 in each language. At the bottom of the visualization is a list of all the employees">
+    <meta http-equiv="refresh" content="600">
+    <meta name="keywords" content="data-visualisation, data-analytics, javascript, d3.js, data visualisation ,data visualization,business dashboards,d3.js,data journalism,conference dashboard">
+    <meta content='We visually represent large datasets for data journalists and businesses to make the data lucid and actionable.' name='description'>
+	   <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css">
+     <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" media="screen" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+     <link rel="stylesheet" type="text/css" media="screen" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+     <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+     <script type="text/javascript" src="../assets/js/d3.v3.min.js"></script>
+     <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>   
+    <meta property="og:title"  content="Linear Range Query" />
+    <meta property="og:description" content="Each blue line in this visualization is an employee. Each of the black vertical is a software language. Each employee is rated from 0 to 10 in each language. At the bottom of the visualization is a list of all the employees.."/> 
+    <html itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="description" content="Each blue line in this visualization is an employee. Each of the black vertical is a software language. Each employee is rated from 0 to 10 in each language. At the bottom of the visualization is a list of all the employees.."/>
+    <meta itemprop="name" content="Linear Range Query">
+	<title>Linear Range Query </title>
+<style>
+svg.linear-range-query{
+  font:10px sans-serif;
+}
+canvas.linear-range-query,svg.linear-range-query {
+  position:absolute;
+  top:0;
+  left:0;
+}
+#chart.linear-range-query{
+  position:relative;
+}
+svg.linear-range-query .brush .extent{
+  fill: rgba(0,0,0,.12);stroke:rgba(255,255,255,.6);
+  shape-rendering:crisp-edges;
+}
+svg.linear-range-query .dark .brush .extent{
+  fill:rgba(255,255,255,.12);
+  stroke:rgba(0,0,0,.5)
+}
+svg.linear-range-query .axis line,.axis path{
+  fill:none;
+  stroke:#222;
+  shape-rendering:crispEdges;
+}
+svg.linear-range-query .axis text{
+  fill:#222;
+  text-shadow:1px 1px 1px #fff,-1px -1px 1px #fff;
+}
+svg.linear-range-query .axis text.label{
+  fill:#444;font-size:14px;
+}
+svg.linear-range-query .dark .axis text{
+  fill:#f2f2f2;text-shadow:0 1px 0 #000,1px 0 0 #000
+}
+svg.linear-range-query .dark .axis text.label{
+  fill:#ddd
+}
+svg.linear-range-query .axis g,svg.linear-range-query .axis path{
+  display:block
+}
+svg.linear-range-query #food-list{
+  position:absolute;left:220px;overflow-x:hidden;
+}
+svg.linear-range-query #food-list span{
+  display:inline-block;height:6px;width:6px;margin:2px 4px;
+}
+</style>
+<script type="text/javascript" src="sizzles.js"></script>
+<script type="text/javascript" src="linear_charts.js"></script>
+</head>
+<body>
+  <!-- HEADER -->
+        <div id="header_wrap" class="outer jumbotron-icon" id="overview" >
+            <header class="inner container">
+              <div class="info-icons pull-left"><a class="fa fa-home fa-2" id="home" href="http://data-analytics.github.io/" ></a>&nbsp;&nbsp;&nbsp;</div>
+          <h1 id="project_title">HR Project Allotment</h1>
+              <p id="project_title_p">Each blue line in this visualization is an employee. Each of the black vertical is a software language. Each employee is rated from 0 to 10 in each language. At the bottom of the visualization is a list of all the employees.
+                </p>
+           </header>
+            
+        </div>
+		
+  <!-- MAIN CONTENT -->
+        <div class="container">
+          <section id="main_content" class="inner">
+
+          <div class='container'>
+           <div class='col-sm-12'>
+            <div class='gray'>Filter by selecting and dragging any of the lines e.g. C, C++, etc.</div>
+          </div>
+          <div class='col-sm-9'>
+          <div id='match'>
+          <div id='chart'>
+          <canvas id='foreground'></canvas>
+          <svg></svg>
+          </div>
+          <div class='f11 gray pull-right' id='legends' style='padding-top: 20px;'>
+          <svg width='22' height='22'><circle cx='12.5' cy='12.5' r='8' stroke='red' stroke-width='0.5' fill='red'/></svg>
+          = Occupied&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <svg width='22' height='22'><circle cx='12.5' cy='12.5' r='8' stroke='orange' stroke-width='0.5' fill='orange'/></svg>
+          = Available from coming week&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <svg width='22' height='22'><circle cx='12.5' cy='12.5' r='8' stroke='green' stroke-width='0.5' fill='green'/></svg>
+          = Available
+          </div>
+<div id='wrap-table'></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body>
+</html>
+

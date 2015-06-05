@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="A scatterplot using d3js. It maps social trust against ease of doing business in various countries.">
+    <meta http-equiv="refresh" content="600">
+    <meta name="keywords" content="data-visualisation, data-analytics, javascript, d3.js, data visualisation ,scatter plot, trust bussiness">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "cc30e3a2-dbb5-4545-ac40-64ca85fe3e37", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> 
+    <meta property="og:title"  content="Trust and Business" />
+    <meta property="og:description" content="A scatterplot using d3js. It maps social trust against ease of doing business in various countries." /> 
+    <meta property="og:image" content="http://data-analytics.github.io/images/trust-business.png" /> 
+    <html itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="description" content="A scatterplot using d3js. It maps social trust against ease of doing business in various countries.">
+    <meta itemprop="name" content="Trust and Business">
+    <title>Trust and Business</title>    
+    <style>
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+      opacity: 1;
+    }
+
+    .axis text { font-size:10px; }
+
+    .circles { opacity: .5; }
+
+    .guide line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+      opacity: 0;
+    }
+    </style>
+  </head>
+  <body>
+      <!-- HEADER -->
+        <div id="header_wrap" class="outer jumbotron-icon" id="overview" >
+            <header class="inner container">
+              <div class="info-icons pull-left"><a class="fa fa-home fa-2" id="home" href="/./" ></a>&nbsp;&nbsp;&nbsp;</div>
+          <h1 id="project_title">Trust Business Analysis</h1>
+              <p id="project_title_p">A scatterplot using d3js. It maps social trust against ease of 
+              doing business in various countries.
+              </p>
+           </header>
+
+        </div>
+
+ <!-- MAIN CONTENT -->
+        <div class="container">
+          <section id="main_content" class="inner">
+            <div id="chart" align="center">
+            </div>
+            <script type="text/javascript" src="trust-business.js"></script>
+          </section>
+        </div>
+</body>
+</html>

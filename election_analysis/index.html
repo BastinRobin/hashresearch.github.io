@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="The graphical image tree map showing the trend of the each party mp's assets , criminal cases etc in 2014 .">
+    <meta name="author" content="HashResearch">
+    <meta http-equiv="refresh" content="600">
+    <meta name="keywords" content="data-visualisation, data-analytics, javascript, d3.js, data visualisation ,treemap,tree map,image treemap,imagemap">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../assets/images/logo.png">
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "cc30e3a2-dbb5-4545-ac40-64ca85fe3e37", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> 
+    <meta property="og:title" content="Parliment Elections Analysis" />
+    <meta property="og:url" content="http://hashresearc/election_analysis"/>
+    <meta property="og:description" content="The graphical image tree map showing the trend of the each party mp's assets , criminal cases etc in 2014." /> 
+
+    <html itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="description" content="The graphical image tree map showing the trend of the each party mp's assets , criminal cases etc in 2014.">
+    <meta itemprop="name" content="Parliment Elections Analysis">
+    <meta itemprop="image" content="http://data-analytics.github.io/images/asset_analysis.png">      
+    <title>Parliment Elections Analysis</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer jumbotron-icon" id="overview" >
+        <header class="inner container">
+          <div class="info-icons pull-left"><a class="fa fa-home fa-2" id="home" href="/" ></a>&nbsp;&nbsp;&nbsp;</div>
+          <h1 id="project_title">Parliment Elections</h1>
+          <p id="project_title_p">The graphical image tree map showing the trend of the each party mp's assets , criminal cases etc in 2014 
+          </p>
+        </header>
+    
+    </div>
+         
+    <!-- MAIN CONTENT -->
+    <div class="container ">
+      <section id="main_content" class="inner">
+       <svg width="960" height="25" xmlns="http://www.w3.org/2000/svg" xlink:xlink="http://www.w3.org/1999/xlink" version="1.1">
+ 
+	      <rect class="party-legend" data-party="INC" data-highlight="[data-party=INC]" data-toggle="highlight" x="0.0" width="67.1428571429" height="20" fill="#019733"></rect>
+	      <text x="33.5714285714" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">INC</text>
+	    
+	      <rect class="party-legend" data-party="BJP" data-highlight="[data-party=BJP]" data-toggle="highlight" x="67.1428571429" width="67.1428571429" height="20" fill="#FB7B0D"></rect>
+	      <text x="100.714285714" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">BJP</text>
+	    
+	      <rect class="party-legend" data-party="CPM" data-highlight="[data-party=CPM]" data-toggle="highlight" x="134.285714286" width="67.1428571429" height="20" fill="#DE0000"></rect>
+	      <text x="167.857142857" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">CPM</text>
+	    
+	      <rect class="party-legend" data-party="JNP" data-highlight="[data-party=JNP]" data-toggle="highlight" x="201.428571429" width="67.1428571429" height="20" fill="#000000"></rect>
+	      <text x="235.0" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">BJD</text>
+	    
+	      <rect class="party-legend" data-party="JD" data-highlight="[data-party=JD]" data-toggle="highlight" x="268.571428571" width="67.1428571429" height="20" fill="#8064a2"></rect>
+	      <text x="302.142857143" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">JD</text>
+	    
+	      <rect class="party-legend" data-party="IND" data-highlight="[data-party=IND]" data-toggle="highlight" x="335.714285714" width="67.1428571429" height="20" fill="#95b3d7"></rect>
+	      <text x="369.285714286" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">IND</text>
+	    
+	      <rect class="party-legend" data-party="CPI" data-highlight="[data-party=CPI]" data-toggle="highlight" x="402.857142857" width="67.1428571429" height="20" fill="#DE0000"></rect>
+	      <text x="436.428571429" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">CPI</text>
+	    
+	      <rect class="party-legend" data-party="DMK" data-highlight="[data-party=DMK]" data-toggle="highlight" x="470.0" width="67.1428571429" height="20" fill="#800000"></rect>
+	      <text x="503.571428571" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">DMK</text>
+	    
+	      <rect class="party-legend" data-party="SP" data-highlight="[data-party=SP]" data-toggle="highlight" x="537.142857143" width="67.1428571429" height="20" fill="#B15928"></rect>
+	      <text x="570.714285714" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">SP</text>
+	    
+	      <rect class="party-legend" data-party="TDP" data-highlight="[data-party=TDP]" data-toggle="highlight" x="604.285714286" width="67.1428571429" height="20" fill="#4bacc6"></rect>
+	      <text x="637.857142857" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">TDP</text>
+	    
+	      <rect class="party-legend" data-party="SWA" data-highlight="[data-party=SWA]" data-toggle="highlight" x="671.428571429" width="67.1428571429" height="20" fill="#0C6965"></rect>
+	      <text x="705.0" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">AITC</text>
+	    
+	      <rect class="party-legend" data-party="BJS" data-highlight="[data-party=BJS]" data-toggle="highlight" x="738.571428571" width="67.1428571429" height="20" fill="#F05A00"></rect>
+	      <text x="772.142857143" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">SHS</text>
+	    
+	      <rect class="party-legend" data-party="BSP" data-highlight="[data-party=BSP]" data-toggle="highlight" x="805.714285714" width="67.1428571429" height="20" fill="#77968E"></rect>
+	      <text x="839.285714286" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">BSP</text>
+	    
+	      <rect class="party-legend" data-party="ADMK" data-highlight="[data-party=ADMK]" data-toggle="highlight" x="872.857142857" width="67.1428571429" height="20" fill="#9DBC2A"></rect>
+	      <text x="906.428571429" y="10.0" text-anchor="middle" dy=".35em" fill="#fff">ADMK</text>
+    </svg>
+    <p class="form-inline">
+    <label value="parameter">Size : </label>
+    <select id="parameter">
+        <option value="age" class="name">Age</option>
+        <option value="votes" class="name">Votes</option>
+        <option value="assets" class="name">Assets</option>
+        <option value="criminal_cases" class="name">Criminal_cases</option>
+    </select>
+    <label value="group">Group By : </label>
+    <select id="options_view">   
+        <option value="party" class="name">Party</option>
+        <option value="state" class="name">State</option>education
+        <option value="poll_date" class="name">Poll date</option>
+        <option value="gender" class="name">Gender</option>
+        <option value="category" class="name">Category</option>
+        <option value="education" class="name">Education</option>
+    </select>
+   <button id ="submit" value="submit" onClick='onRender();' >submit</button>
+            <label align="left" >Search:</label>
+            <input type="text" class="search" placeholder="eg: Delhi">
+   </p>
+    <div class="par_treemap" align="center">
+        <script type="text/javascript" src="par_treemap.js"></script>
+    </div>
+  </section>
+  </div>
+  <script>
+  onRender();
+  </script>
+</body>
+</html>
