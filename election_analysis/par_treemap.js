@@ -59,7 +59,7 @@ function onRender() {
       .attr("width", function(d) { return d.dx; })
       .attr("height", function(d) { return d.dy; })
       .attr("data-title",function(d) { return '<p>Constituency : '+d.constituency
-+'</p> <br/> <p>Candidate : '+d.name+'</p><br/><p> '+parameter+' : '+addCommas(d[parameter])+'</p><br/> <p> '+group_by+' : '+d[group_by]+'</p>' ;})
++'</p><p>Candidate : '+d.name+'</p><p> '+parameter+' : '+addCommas(d[parameter])+'</p><p> '+group_by+' : '+d[group_by]+'</p>' ;})
       .attr("sub_link",function(d) { return d.constituency
 +d.state+d.party ;})
       .style("fill", function(d) { return d3.rgb(d.color).darker(parseFloat((d.votes/d.polled_votes)).toFixed(1)*2.5); })
