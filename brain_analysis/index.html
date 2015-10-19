@@ -1,0 +1,98 @@
+<html>
+<head>
+  <title>Brain Dominance Correlation</title>
+  <link rel="stylesheet" type="text/css" href="assets/waitMe.css">
+</head>
+<body>
+<select class="first">
+  <option value="BD DIFF">BD DIFF</option>
+  <option value="LSI DIFF">LSI DIFF</option>
+  <option value="MI DIFF">MI DIFF</option>
+  <option value="B5 DIFF">B5 DIFF</option>
+</select>
+<select class="second">
+  <option value="BD DIFF">BD DIFF</option>
+  <option value="LSI DIFF">LSI DIFF</option>
+  <option value="MI DIFF">MI DIFF</option>
+  <option value="B5 DIFF">B5 DIFF</option>
+</select>
+<div id="chartContainer">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="assets/d3.v3.min.js"></script>
+  <script src="assets/dimple.v2.1.6.min.js"></script>
+  <script type="text/javascript" src="assets/waitMe.js"></script>
+  <script type="text/javascript">
+
+    width = 1000;
+    height = 1000;
+    var svg = dimple.newSvg("#chartContainer", width, height);
+
+    loadMe = function (){
+          $('body').waitMe({
+          effect: 'rotation',
+          text: '',
+          //background for container (string).
+          bg: 'rgba(255,255,255,0.7)',
+          //color forbackground animation and text (string).
+          color: '#000',
+          //change width for elem animation (string).
+          sizeW: '',
+          //change height for elem animation (string).
+          sizeH: '',
+          // url to image
+          source: ''
+          });
+      }     
+
+      // Loader destroyer
+      stopMe = function(element, t) {
+
+          setTimeout(function() {
+              $(element).waitMe('hide');
+          }, t);
+      }  
+
+    renderChart = function(svg, config) {
+      d3.csv("/data/ROBIN_VISUAL.csv", function (data) {
+        // data = dimple.filterData(data, "Month", "Dec-11");
+        var myChart = new dimple.chart(svg, data);
+        myChart.floatingBarWidth = 2;
+        myChart.setBounds(10, 10, width - 300, height - 400)
+        myChart.addMeasureAxis("x", config['x']);
+        myChart.addMeasureAxis("y", config['y']);
+        var s = myChart.addSeries(["CID", "NAME"], dimple.plot.bar);
+        s.stacked = false;
+        // myChart.addLegend(0, 0, width, 80, "left");
+        myChart.draw();
+      });
+    }
+
+    loadMe();
+    renderChart(svg, { 'x' : 'BD DIFF', 'y' : 'B5 DIFF'});
+    stopMe('body');
+
+    d3.select('.first')
+      .on('change', function() {
+        loadMe();
+        var newData = d3.select(this).property('value');
+        $("svg").empty();
+        renderChart(svg, { 'x' : newData, 'y' : d3.select('.second').property('value')});
+        stopMe('body');
+    });
+
+    d3.select('.second')
+      .on('change', function() {
+        loadMe();
+        var newData = d3.select(this).property('value');
+        $("svg").empty();
+        renderChart(svg, { 'x' : d3.select('.first').property('value'), 'y' : newData });
+        stopMe('body');
+    });
+
+
+  </script>
+</div>
+</body>
+
+
+</html>
