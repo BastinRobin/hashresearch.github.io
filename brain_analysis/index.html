@@ -53,7 +53,7 @@
       }  
 
     renderChart = function(svg, config) {
-      d3.csv("data/data.csv", function (data) {
+      d3.csv("data.csv", function (data) {
         // data = dimple.filterData(data, "Month", "Dec-11");
         var myChart = new dimple.chart(svg, data);
         myChart.floatingBarWidth = 2;
