@@ -2,95 +2,136 @@
 <head>
   <title>Brain Dominance Correlation</title>
   <link rel="stylesheet" type="text/css" href="assets/waitMe.css">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-<select class="first">
-  <option value="BD DIFF">BD DIFF</option>
-  <option value="LSI DIFF">LSI DIFF</option>
-  <option value="MI DIFF">MI DIFF</option>
-  <option value="B5 DIFF">B5 DIFF</option>
-</select>
-<select class="second">
-  <option value="BD DIFF">BD DIFF</option>
-  <option value="LSI DIFF">LSI DIFF</option>
-  <option value="MI DIFF">MI DIFF</option>
-  <option value="B5 DIFF">B5 DIFF</option>
-</select>
-<div id="chartContainer">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="assets/d3.v3.min.js"></script>
-  <script src="assets/dimple.v2.1.6.min.js"></script>
-  <script type="text/javascript" src="assets/waitMe.js"></script>
-  <script type="text/javascript">
+  <div class="container">
+    <select class="first">
+      <option value="BD DIFF">BD DIFF</option>
+      <option value="LSI DIFF">LSI DIFF</option>
+      <option value="MI DIFF">MI DIFF</option>
+      <option value="B5 DIFF">B5 DIFF</option>
+    </select>
+    <select class="second">
+      <option value="BD DIFF">BD DIFF</option>
+      <option value="LSI DIFF">LSI DIFF</option>
+      <option value="MI DIFF">MI DIFF</option>
+      <option value="B5 DIFF">B5 DIFF</option>
+    </select>
+  </div>
+<div class="row">
+  <div id="chartContainer" class="col-md-6">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="assets/d3.v3.min.js"></script>
+    <script src="assets/dimple.v2.1.6.min.js"></script>
+    <script type="text/javascript" src="assets/waitMe.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript">
 
-    width = 1000;
-    height = 1000;
-    var svg = dimple.newSvg("#chartContainer", width, height);
+      width = 950;
+      height = 1000;
+      var svg = dimple.newSvg("#chartContainer", width, height);
 
-    loadMe = function (){
-          $('body').waitMe({
-          effect: 'rotation',
-          text: '',
-          //background for container (string).
-          bg: 'rgba(255,255,255,0.7)',
-          //color forbackground animation and text (string).
-          color: '#000',
-          //change width for elem animation (string).
-          sizeW: '',
-          //change height for elem animation (string).
-          sizeH: '',
-          // url to image
-          source: ''
-          });
-      }     
+      loadMe = function (){
+            $('body').waitMe({
+            effect: 'rotation',
+            text: '',
+            //background for container (string).
+            bg: 'rgba(255,255,255,0.7)',
+            //color forbackground animation and text (string).
+            color: '#000',
+            //change width for elem animation (string).
+            sizeW: '',
+            //change height for elem animation (string).
+            sizeH: '',
+            // url to image
+            source: ''
+            });
+        }     
 
-      // Loader destroyer
-      stopMe = function(element, t) {
+        // Loader destroyer
+        stopMe = function(element, t) {
 
-          setTimeout(function() {
-              $(element).waitMe('hide');
-          }, t);
-      }  
+            setTimeout(function() {
+                $(element).waitMe('hide');
+            }, t);
+        }
 
-    renderChart = function(svg, config) {
-      d3.csv("data/data.csv", function (data) {
-        // data = dimple.filterData(data, "Month", "Dec-11");
-        var myChart = new dimple.chart(svg, data);
-        myChart.floatingBarWidth = 2;
-        myChart.setBounds(10, 10, width - 300, height - 400)
-        myChart.addMeasureAxis("x", config['x']);
-        myChart.addMeasureAxis("y", config['y']);
-        var s = myChart.addSeries(["CID", "NAME"], dimple.plot.bar);
-        s.stacked = false;
-        // myChart.addLegend(0, 0, width, 80, "left");
-        myChart.draw();
+      d3.csv('data/model1.csv', function(data) {
+        window.model1 = data;
       });
-    }
 
-    loadMe();
-    renderChart(svg, { 'x' : 'BD DIFF', 'y' : 'B5 DIFF'});
-    stopMe('body');
+      renderChart = function(svg, config) {
+        d3.csv("data/data.csv", function (data) {
+          // data = dimple.filterData(data, "Month", "Dec-11");
+          var myChart = new dimple.chart(svg, data);
+          myChart.floatingBarWidth = 2;
+          myChart.setBounds(10, 10, width - 300, height - 400)
+          myChart.addMeasureAxis("x", config['x']);
+          myChart.addMeasureAxis("y", config['y']);
+          var s = myChart.addSeries(["CID", "NAME"], dimple.plot.bar);
+          s.stacked = false;
+          console.log(s);
+          // myChart.addLegend(0, 0, width, 80, "left");
+          myChart.draw();
+          $('rect').on('click', function() { 
+            // console.log(this.id); 
+            console.log(this.id.split('-')[1]);
+            c_id = this.id.split('-')[1].replace('c', 'C');
+            d = _.findWhere(model1, { CID: c_id });
 
-    d3.select('.first')
-      .on('change', function() {
-        loadMe();
-        var newData = d3.select(this).property('value');
-        $("svg").empty();
-        renderChart(svg, { 'x' : newData, 'y' : d3.select('.second').property('value')});
-        stopMe('body');
-    });
-
-    d3.select('.second')
-      .on('change', function() {
-        loadMe();
-        var newData = d3.select(this).property('value');
-        $("svg").empty();
-        renderChart(svg, { 'x' : d3.select('.first').property('value'), 'y' : newData });
-        stopMe('body');
-    });
+            $('.cid').html(d['CID']);
+            $('.bd').html(d['BD']);
+            $('.lsi').html(d['LSI']);
+            $('.mi').html(d['MI']);
+            $('.personality').html(d['PERSONALITY']);
 
 
-  </script>
+          });
+        });
+        
+      }
+
+      loadMe();
+      renderChart(svg, { 'x' : 'BD DIFF', 'y' : 'B5 DIFF'});
+      stopMe('body');
+
+      d3.select('.first')
+        .on('change', function() {
+          loadMe();
+          var newData = d3.select(this).property('value');
+          $("svg").empty();
+          renderChart(svg, { 'x' : newData, 'y' : d3.select('.second').property('value')});
+          stopMe('body');
+      });
+
+      d3.select('.second')
+        .on('change', function() {
+          loadMe();
+          var newData = d3.select(this).property('value');
+          $("svg").empty();
+          renderChart(svg, { 'x' : d3.select('.first').property('value'), 'y' : newData });
+          stopMe('body');
+      });
+    </script>
+  </div>
+  <div class="col-md-5">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Cognitive Profile
+      </div>
+      <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item" ><b>CID:</b> <span class="cid"></span></li>
+        <li class="list-group-item" ><b>BD:</b> <span class="bd"></span></li>
+        <li class="list-group-item" ><b>LSI:</b> <span class="lsi"></span></li>
+        <li class="list-group-item" ><b>MI:</b> <span class="mi"></span></li>
+        <li class="list-group-item" ><b>PERSONALITY:</b> <span class="personality"></span></li>
+      </ul>
+    </div>
+  </div>
+</div>
 </div>
 </body>
 
