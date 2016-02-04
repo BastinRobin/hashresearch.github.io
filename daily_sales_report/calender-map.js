@@ -60,11 +60,15 @@ svg.selectAll(".month")
    .attr("dy", "-.25em")
    .text(function(d,i){ return month[i] });
 
+
+   // For eg: { date: value }
 d3.csv("data.csv", function(error, csv) {
   var data = d3.nest()
     .key(function(d) { return d.Date; })
     .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
     .map(csv);
+
+  console.log(data);
 
   rect.filter(function(d) { return d in data; })
       .attr("fill", function(d) { return color(data[d]); })

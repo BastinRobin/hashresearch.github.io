@@ -7,18 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <select class="first">
-      <option value="BD DIFF">BD DIFF</option>
-      <option value="LSI DIFF">LSI DIFF</option>
-      <option value="MI DIFF">MI DIFF</option>
-      <option value="B5 DIFF">B5 DIFF</option>
-    </select>
-    <select class="second">
-      <option value="BD DIFF">BD DIFF</option>
-      <option value="LSI DIFF">LSI DIFF</option>
-      <option value="MI DIFF">MI DIFF</option>
-      <option value="B5 DIFF">B5 DIFF</option>
-    </select>
+  <h3>Brain Dominance vs Multiple Intelligences</h3>
   </div>
 <div class="row">
   <div id="chartContainer" class="col-md-6">
@@ -58,26 +47,30 @@
             }, t);
         }
 
-      d3.csv('data/model1.csv', function(data) {
+      d3.csv('data/model2.csv', function(data) {
         window.model1 = data;
       });
 
       renderChart = function(svg, config) {
-        d3.csv("data/data.csv", function (data) {
-          // data = dimple.filterData(data, "Month", "Dec-11");
+        d3.csv("data/data-main.csv", function (data) {
           var myChart = new dimple.chart(svg, data);
           myChart.floatingBarWidth = 2;
           myChart.setBounds(10, 10, width - 300, height - 400)
           myChart.addMeasureAxis("x", config['x']);
           myChart.addMeasureAxis("y", config['y']);
-          var s = myChart.addSeries(["CID", "NAME"], dimple.plot.bar);
+          myChart.defaultColors = [
+              new dimple.color("#FF0000", "black", "80%"), // Set a red fill with a blue stroke
+              // new dimple.color("#00FF00"), // Set a green fill with a darker green stroke
+              // new dimple.color("rgb(0, 0, 255)") // Set a blue fill with a darker blue stroke
+          ]; 
+          var s = myChart.addSeries(["CID"], dimple.plot.bar);
           s.stacked = false;
-          console.log(s);
+          // console.log(s);
           // myChart.addLegend(0, 0, width, 80, "left");
           myChart.draw();
           $('rect').on('click', function() { 
             // console.log(this.id); 
-            console.log(this.id.split('-')[1]);
+            // console.log(this.id.split('-')[1]);
             c_id = this.id.split('-')[1].replace('c', 'C');
             d = _.findWhere(model1, { CID: c_id });
 
@@ -94,39 +87,21 @@
       }
 
       loadMe();
-      renderChart(svg, { 'x' : 'BD DIFF', 'y' : 'B5 DIFF'});
+      renderChart(svg, { 'x' : 'BD DIFF', 'y' : 'MI DIFF'});
       stopMe('body');
-
-      d3.select('.first')
-        .on('change', function() {
-          loadMe();
-          var newData = d3.select(this).property('value');
-          $("svg").empty();
-          renderChart(svg, { 'x' : newData, 'y' : d3.select('.second').property('value')});
-          stopMe('body');
-      });
-
-      d3.select('.second')
-        .on('change', function() {
-          loadMe();
-          var newData = d3.select(this).property('value');
-          $("svg").empty();
-          renderChart(svg, { 'x' : d3.select('.first').property('value'), 'y' : newData });
-          stopMe('body');
-      });
     </script>
   </div>
   <div class="col-md-5">
     <div class="panel panel-info">
       <div class="panel-heading">
-        Cognitive Profile
+        Cognitive Profile - Competency Based
       </div>
       <div class="panel-body">
       <ul class="list-group">
-        <li class="list-group-item" ><b>CID:</b> <span class="cid"></span></li>
-        <li class="list-group-item" ><b>BD:</b> <span class="bd"></span></li>
-        <li class="list-group-item" ><b>LSI:</b> <span class="lsi"></span></li>
-        <li class="list-group-item" ><b>MI:</b> <span class="mi"></span></li>
+        <li class="list-group-item" ><b>CANDIDATE ID:</b> <span class="cid"></span></li>
+        <li class="list-group-item" ><b>BRAIN DOMINANCE:</b> <span class="bd"></span></li>
+        <li class="list-group-item" ><b>LEARNING STYLE:</b> <span class="lsi"></span></li>
+        <li class="list-group-item" ><b>MULTIPLE INTELLIGENCES:</b> <span class="mi"></span></li>
         <li class="list-group-item" ><b>PERSONALITY:</b> <span class="personality"></span></li>
       </ul>
     </div>
