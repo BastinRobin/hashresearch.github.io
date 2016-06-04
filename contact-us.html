@@ -144,7 +144,7 @@
         <h2>Email us.</h2>
         <p>We're just an email away to help, use the email form to send a message.</p>
         <div class="row">
-          <form action="contact-us.php" method="post">
+          <form action="https://formspree.io/info@hashresearch.com" method="post">
             <!-- Text input-->
             <div class="col-md-6">
               <div class="form-group">
@@ -163,7 +163,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="control-label" for="email">Email <span class="required">*</span></label>
-                <input id="email" name="email" type="text" class="form-control input-md" required>
+                <input id="email" name="_replyto" type="text" class="form-control input-md" required>
               </div>
             </div>
             <!-- Text input-->
@@ -177,7 +177,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="control-label" for="service">Select service</label>
-                <select id="service" name="service" class="form-control">
+                <select id="service" name="_subject" class="form-control">
                   <option value="LitmusBi">LitmusBi</option>
                   <option value="Algorithimic">Algorithimic</option>
                   <option value="Praanah">Praanah</option>
@@ -186,6 +186,7 @@
               </div>
             </div>
             <!-- Text input-->
+            <input type="hidden" name="_next" value="http://hashresearch.com/contact-us.html" />
             <div class="col-md-12">
               <div class="form-group">
                 <label class="control-label" for="message">Message</label>
