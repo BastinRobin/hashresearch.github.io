@@ -30,6 +30,8 @@ months['12'] = 'Dec';
 
 
 d3.xml("weather.svg", "image/svg+xml", function(xml) {
+  console.log(xml);
+  
   document.body.appendChild(xml.documentElement);
   d3.selectAll('path').attr('fill', '#fff');
   d3.csv('weather.csv', function(data) {
