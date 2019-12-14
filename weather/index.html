@@ -4,53 +4,79 @@
   <link rel="stylesheet" href="common.css">
 </head><body>
 
-<h1>Weather Trends From (1902 - 2002)</h1>
+<h1>Weather Trends From (1902 - 2002) <button onclick="start()">Start</button></h1>
 <p>India's weather over a century</p>
+
 <h3 id="year"></h3>
 
 <script src="d3.v3.min.js"></script>
 <script>
-var color = d3.scale.linear()
+// (function() {
+  d3.csv('weather.csv', function(data) {
+    // localStorage.setItem('data', JSON.stringify(data));
+    window.data = data;
+  
+  });
+
+  d3.xml("weather.svg", "images/svg+xml", function(xml) {
+    window.xml = xml;
+  });
+
+// })();
+
+
+
+function start() {
+
+
+  var color = d3.scale.linear()
     .domain([-20, 0, 20, 40])
     .range(["blue", "green", "yellow", "red"]);
 
-var months = {};
-months['01'] = 'Jan';
-months['02'] = 'Feb';
-months['03'] = 'Mar';
-months['04'] = 'Apr';
-months['05'] = 'May';
-months['06'] = 'Jun';
-months['07'] = 'Jul';
-months['08'] = 'Aug';
-months['09'] = 'Sep';
-months['10'] = 'Oct';
-months['11'] = 'Nov';
-months['12'] = 'Dec';
+    var months = {};
+    months['01'] = 'Jan';
+    months['02'] = 'Feb';
+    months['03'] = 'Mar';
+    months['04'] = 'Apr';
+    months['05'] = 'May';
+    months['06'] = 'Jun';
+    months['07'] = 'Jul';
+    months['08'] = 'Aug';
+    months['09'] = 'Sep';
+    months['10'] = 'Oct';
+    months['11'] = 'Nov';
+    months['12'] = 'Dec';
 
 
-d3.xml("weather.svg", "image/svg+xml", function(xml) {
-  console.log(xml);
+  // d3.xml("weather.svg", "image/svg+xml", function(xml) {
+  //   console.log(xml);
+    
+    document.body.appendChild(window.xml.documentElement);
+    d3.selectAll('path').attr('fill', '#fff');
+      data = window.data;  
   
-  document.body.appendChild(xml.documentElement);
-  d3.selectAll('path').attr('fill', '#fff');
-  d3.csv('weather.csv', function(data) {
-    for (var paths=[], i=0, row; row=data[i]; i++) {
-      paths.push(d3.select('g[title="' + row.state + '"] path[title="' + row.district + '"]').datum(row));
-    }
+    // d3.csv('weather.csv', function(data) {
+      for (var paths=[], i=0, row; row=data[i]; i++) {
+        paths.push(d3.select('g[title="' + row.state + '"] path[title="' + row.district + '"]').datum(row));
+      }
 
-    d3.keys(data[0]).slice(0, -2).forEach(function(month, i) {
-      setTimeout(function() {
-        for (var i=0, path; path=paths[i]; i++) {
+      d3.keys(data[0]).slice(0, -2).forEach(function(month, i) {
+        setTimeout(function() {
+          for (var i=0, path; path=paths[i]; i++) {
 
-          year = month.slice(0, 4);
-          m = month.slice(4,6);
-          document.getElementById('year').innerHTML = 'Year: ' + year +'  Month:'+ months[String(m)] ;
-          path.attr('fill', color(path.datum()[month]));
-        }
-      }, i*50);
-    });
-  });
-});
+            year = month.slice(0, 4);
+            m = month.slice(4,6);
+            document.getElementById('year').innerHTML = 'Year: ' + year +'  Month:'+ months[String(m)] ;
+            path.attr('fill', color(path.datum()[month]));
+          }
+        }, i*50);
+      });
+    // });
+  // });
+}
+
+
+
+
 </script>
 </body></html>
